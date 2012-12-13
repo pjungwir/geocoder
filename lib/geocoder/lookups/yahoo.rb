@@ -48,7 +48,7 @@ module Geocoder::Lookup
       # seems to have Error == 7 when no results, though this is not documented
       if [0, 7].include?(doc['Error'].to_i)
         if doc['Found'].to_i > 0
-          r = doc['Result']
+          r = doc['Result'] || doc['Results']
           return r.is_a?(Array) ? r : [r]
         else
           return []
